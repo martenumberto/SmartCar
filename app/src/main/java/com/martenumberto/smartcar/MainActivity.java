@@ -174,6 +174,9 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_music) {
 
+        } else if (id == R.id.nav_tv) {
+            ft.replace(R.id.content_main, Fragment.instantiate(this, tvFragment.class.getName())).commit();
+            navigationView.setCheckedItem(R.id.nav_tv);
         } else if (id == R.id.nav_info) {
 
         } else if (id == R.id.nav_settings) {
