@@ -68,5 +68,18 @@
         android:id="@+id/btnEC"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:minHeight="151dp"
+        android:minWidth="200dip" />
+
+    <Switch
+        android:text="Switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnEC"
+        android:layout_alignEnd="@+id/btnEC"
+        android:layout_marginTop="57dp"
+        android:id="@+id/switch1"
+        android:switchMinWidth="100dp"
+        android:switch />
 </RelativeLayout>

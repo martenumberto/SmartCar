@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,7 @@ public class tvFragment extends Fragment {
     int vlcRequestCode = 4222;
 
     private ListView lv;
+    RecyclerView rv;
     ProgressDialog progress;
     ArrayList<HashMap<String, String>> TVArrayList;
 
@@ -157,7 +159,9 @@ public class tvFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            ListAdapter adapter = new SimpleAdapter(getActivity(), TVArrayList, R.layout.tv_list_item, new String[]{"uuid", "name", "services"}, new int[]{R.id.tv_list_uuid, R.id.tv_list_name, R.id.tv_list_services});
+
+
+            ListAdapter adapter = new SimpleAdapter(getActivity(), TVArrayList, R.layout.tv_list_item, new String[]{"name", "services"}, new int[]{R.id.tv_list_name, R.id.tv_list_services});
 
             lv.setAdapter(adapter);
 

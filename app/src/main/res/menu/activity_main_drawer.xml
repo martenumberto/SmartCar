@@ -4,34 +4,39 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_start"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_start"
             android:title="@string/menu_start" />
         <item
             android:id="@+id/nav_air"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_menu_air"
             android:title="@string/menu_air" />
         <item
             android:id="@+id/nav_light"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_light"
             android:title="@string/menu_light" />
         <item
+            android:title="@string/menu_navigation"
+            android:id="@+id/nav_gps"
+            android:icon="@drawable/ic_menu_gps" />
+        <item
             android:id="@+id/nav_music"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:icon="@drawable/ic_menu_music"
+            android:title="@string/menu_music" />
         <item
             android:title="@string/menu_tv"
-            android:id="@+id/nav_tv" />
+            android:id="@+id/nav_tv"
+            android:icon="@drawable/ic_menu_tv" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/menu_titel_more">
         <menu>
             <item
                 android:id="@+id/nav_info"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_menu_info"
                 android:title="@string/menu_info" />
             <item
                 android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_menu_settings"
                 android:title="@string/menu_settings" />
         </menu>
     </item>

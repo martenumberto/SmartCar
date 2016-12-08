@@ -2,17 +2,15 @@ package com.martenumberto.smartcar;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -25,19 +23,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
@@ -172,13 +157,21 @@ public class MainActivity extends AppCompatActivity
             navigationView.setCheckedItem(R.id.nav_air);
         } else if (id == R.id.nav_light) {
 
-        } else if (id == R.id.nav_music) {
+        } else if (id == R.id.nav_gps) {
 
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW);
+            mapIntent.setPackage("com.google.android.apps.maps");
+            startActivity(mapIntent);
+            ;
+
+        } else if (id == R.id.nav_music) {
+            Intent intent = new Intent("android.intent.action.MUSIC_PLAYER");
+            startActivity(intent);
         } else if (id == R.id.nav_tv) {
             ft.replace(R.id.content_main, Fragment.instantiate(this, tvFragment.class.getName())).commit();
             navigationView.setCheckedItem(R.id.nav_tv);
         } else if (id == R.id.nav_info) {
-
+            Toast.makeText(this, "SmartCar v1.0 - SmartCar Project by Marten Bosse", Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_settings) {
             new getState(this, getCurrentFocus()).execute("UMLuft");
         }

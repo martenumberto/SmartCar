@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light">
 
     <TextView
         android:id="@+id/tv_list_name"
@@ -12,20 +13,15 @@
         android:paddingTop="6dip"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tv_list_uuid"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="2dip"
-        android:textColor="@color/colorAccent" />
+        android:textStyle="bold"
+        android:text="Name" />
 
     <TextView
         android:id="@+id/tv_list_services"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#5d5d5d"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:text="Services" />
 
 </LinearLayout>
