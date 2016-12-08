@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -21,19 +23,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final String tag = "MainActivity";
+    final int SPEECHINTENT_REQ_CODE = 11833;
+    TextToSpeech sprecher;
+
+    //TODO: Implement Spotify Function
+    final String SpotifySearch = "https://api.spotify.com/v1/search?type=artist&limit=1";
+
+    //public View view = this;
     public Context context;
+
+    setState set = new setState();
 
     Boolean speechIsRunning;
 
@@ -50,7 +72,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (speechIsRunning = false) {
+                if (speechIsRunning == false) {
                     Snackbar.make(view, "Sprachsteuerung gestartet", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                     speechIsRunning = true;
@@ -59,6 +81,10 @@ public class MainActivity extends AppCompatActivity
                             .setAction("Action", null).show();
                     speechIsRunning = false;
                 }
+
+                Intent speechRecognitionIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                speechRecognitionIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault().toString());
+                startActivityForResult(speechRecognitionIntent, SPEECHINTENT_REQ_CODE);
             }
         });
 
@@ -80,6 +106,15 @@ public class MainActivity extends AppCompatActivity
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.addToBackStack(null);
         ft.commit();
+
+        sprecher = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != TextToSpeech.ERROR) {
+                    sprecher.setLanguage(Locale.GERMANY);
+                }
+            }
+        });
 
         context = this;
     }
@@ -149,5 +184,54 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //TODO Extend the Voice Recognitation
+
+        String[] greetingArray = {"Moin Typ!", "Moin Marten!", "Was geht ab?", "Gib gas!"};
+        String greeting = greetingArray[new Random().nextInt(greetingArray.length)];
+
+        if (requestCode == SPEECHINTENT_REQ_CODE && resultCode == RESULT_OK) {
+            ArrayList<String> speechResults = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+
+            String input = speechResults.get(0);
+
+            Log.d(tag, "Spracheingabe: " + input);
+
+            if (input.contains("Hallo Auto")) {
+
+                if (input.contains("Temperatur")) {
+
+                    if (input.contains("Rechts")) {
+
+                    } else if (input.contains("Links")) {
+
+                    }
+
+                }
+
+                if (input.contains("Klima")) {
+                    if (input.contains("an")) {
+                        set.setState("ECSwitch", "on");
+                        sprecher.speak("Ok, Ich habe die Klimaanlage eingeschaltet", TextToSpeech.QUEUE_FLUSH, null);
+                        new getState(this, getCurrentFocus()).execute("ECSwitch");
+                    }
+                    if (input.contains("aus")) {
+                        set.setState("ECSwitch", "off");
+                        sprecher.speak("Ok, Ich habe die Klimaanlage ausgeschaltet", TextToSpeech.QUEUE_FLUSH, null);
+                        new getState(this, getCurrentFocus()).execute("ECSwitch");
+                    }
+                } else {
+                    Toast.makeText(this, greeting, Toast.LENGTH_LONG).show();
+                    sprecher.speak(greeting, TextToSpeech.QUEUE_FLUSH, null);
+                }
+
+            }
+
+        }
+    }
+
 
 }
