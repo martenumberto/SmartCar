@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">SmartCar</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="author">Marten Bosse</string>
+    <string name="car">W124</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -10,19 +14,21 @@
     <string name="menu_light">Licht</string>
     <string name="menu_air">Klima</string>
     <string name="menu_connectiontest">Verbindungtest</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <string name="title_activity_tvplayer">TVPlayerActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="menu_tv">Fernsehen</string>
     <string name="menu_music">Musik</string>
-    <string name="menu_titel_more">Weitere Optionen</string>
-    <string name="title_activity_main">MainActivity</string>
-
-    <string name="action_settings">Settings</string>
     <string name="menu_navigation">Google Maps</string>
+    <string name="menu_titel_more">Weitere Optionen</string>
+
+    <string name="setting_lightincar">Innenraumbeleuchtung</string>
+    <string name="setting_lightfoot">Fußraumbeleuchtung</string>
+    <string name="setting_temprechts">Temperatur Rechts</string>
+    <string name="setting_templinks">Temperatur Links</string>
+    <string name="setting_EC">Klimakompressor</string>
+    <string name="setting_dryer">Lufttrockner</string>
+    <string name="setting_umluft">Umluft</string>
+
+    <string name="speech_start">Spracherkennung gestartet</string>
+    <string name="speech_finish">Spracherkennung abgeschlossen</string>
+    <string name="speech_error">Spracherkennung nicht erfolgreich</string>
 
 </resources>

@@ -1,15 +1,12 @@
 package com.martenumberto.smartcar;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Switch;
 import android.widget.ToggleButton;
-import android.widget.Toolbar;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -87,6 +84,7 @@ public class getState extends AsyncTask<String, Void, String> {
             } else {
                 btn.setChecked(false);
             }
+
         } else if (device == "TempLinks") {
             SeekBar bar = (SeekBar) view.findViewById(R.id.barTempLinks);
             bar.setProgress(Integer.parseInt(result));
@@ -107,8 +105,21 @@ public class getState extends AsyncTask<String, Void, String> {
             } else {
                 btn.setChecked(false);
             }
+        } else if (device == "LightInCar") {
+            Switch btn = (Switch) view.findViewById(R.id.switch_lightincar);
+            if (Integer.parseInt(result) == 1) {
+                btn.setChecked(true);
+            } else {
+                btn.setChecked(false);
+            }
+        } else if (device == "LightFoot") {
+            Switch btn = (Switch) view.findViewById(R.id.switch_lightfoot);
+            if (Integer.parseInt(result) == 1) {
+                btn.setChecked(true);
+            } else {
+                btn.setChecked(false);
+            }
         }
-
 
         Log.d(tag, "Result: " + result + "\nDevice : " + device);
 

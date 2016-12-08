@@ -50,7 +50,9 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/btnEC"
         android:layout_centerHorizontal="true"
-        android:id="@+id/btnUML" />
+        android:id="@+id/btnUML"
+        android:minHeight="120dp"
+        android:minWidth="180dip" />
 
     <ToggleButton
         android:text="ToggleButton"
@@ -59,7 +61,9 @@
         android:layout_alignTop="@+id/btnUML"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/btnDry" />
+        android:id="@+id/btnDry"
+        android:minHeight="120dp"
+        android:minWidth="180dip" />
 
     <ToggleButton
         android:text="ToggleButton"
@@ -69,17 +73,7 @@
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:minHeight="151dp"
-        android:minWidth="200dip" />
+        android:minHeight="120dp"
+        android:minWidth="180dip" />
 
-    <Switch
-        android:text="Switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnEC"
-        android:layout_alignEnd="@+id/btnEC"
-        android:layout_marginTop="57dp"
-        android:id="@+id/switch1"
-        android:switchMinWidth="100dp"
-        android:switch />
 </RelativeLayout>
