@@ -3,6 +3,7 @@
     <string name="title_activity_main">MainActivity</string>
 
     <string name="author">Marten Bosse</string>
+    <string name="start_year">2016</string>
     <string name="car">W124</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -30,5 +31,10 @@
     <string name="speech_start">Spracherkennung gestartet</string>
     <string name="speech_finish">Spracherkennung abgeschlossen</string>
     <string name="speech_error">Spracherkennung nicht erfolgreich</string>
+
+    <string name="info_titel">SmartCar Project</string>
+    <string name="info_text">Dieses Projekt wurde von mir gestartet um mein älteres, aber sehr
+                            schönes Auto Smart zu machen. Ich möchte die Mittelkonsole durch ein
+                            Tablet ersetzen und damit die Heizung, Beleuchtung,... steuern</string>
 
 </resources>

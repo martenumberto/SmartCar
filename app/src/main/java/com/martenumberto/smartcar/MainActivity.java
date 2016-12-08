@@ -1,5 +1,6 @@
 package com.martenumberto.smartcar;
 
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -172,7 +173,8 @@ public class MainActivity extends AppCompatActivity
             ft.replace(R.id.content_main, Fragment.instantiate(this, tvFragment.class.getName())).commit();
             navigationView.setCheckedItem(R.id.nav_tv);
         } else if (id == R.id.nav_info) {
-            Toast.makeText(this, "SmartCar v1.0 - SmartCar Project by Marten Bosse", Toast.LENGTH_LONG).show();
+            DialogFragment newFragment = new InfoDialog();
+            newFragment.show(this.getFragmentManager(), "Info");
         } else if (id == R.id.nav_settings) {
             new getState(this, getCurrentFocus()).execute("UMLuft");
         }
